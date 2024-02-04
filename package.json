@@ -1,8 +1,8 @@
 {
-  "name": "vite-template-solid",
-  "version": "0.0.0",
+  "name": "stg-gt-local",
+  "version": "0.1.0",
   "type": "module",
-  "description": "",
+  "description": "Why local when you can stg?",
   "scripts": {
     "start": "vite",
     "dev": "vite",
@@ -12,6 +12,7 @@
   "license": "MIT",
   "devDependencies": {
     "@crxjs/vite-plugin": "beta",
+    "@types/chrome": "^0.0.260",
     "solid-devtools": "^0.29.2",
     "typescript": "^5.3.3",
     "vite": "^5.0.11",
