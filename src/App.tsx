@@ -54,6 +54,13 @@ const App: Component = () => {
             <div>
               <input
                 type="checkbox"
+                onChange={(e) =>
+                  setRules((old) => [
+                    ...old.slice(0, i()),
+                    { ...rule, enabled: e.currentTarget.checked },
+                    ...old.slice(i() + 1),
+                  ])
+                }
                 checked={rule.enabled}
                 name={`${i}-enabled`}
                 id={`${i}-enabled`}
