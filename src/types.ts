@@ -1,1 +1,1 @@
-export type Rule = { selector: string; url: string; enabled: boolean };
+export type Rule = { selector: string; url: string; enabled: boolean, hostname: string };

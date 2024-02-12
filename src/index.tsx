@@ -1,7 +1,7 @@
 /* @refresh reload */
 import { render } from 'solid-js/web';
 
-import './index.css';
+import '@picocss/pico/css/pico.blue.min.css'
 import App from './App';
 
 const root = document.getElementById('root');
