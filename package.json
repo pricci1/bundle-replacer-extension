@@ -1,6 +1,6 @@
 {
   "name": "stg-gt-local",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "type": "module",
   "description": "Why local when you can stg?",
   "scripts": {
@@ -19,6 +19,7 @@
     "vite-plugin-solid": "^2.8.2"
   },
   "dependencies": {
+    "@picocss/pico": "^2.0.0",
     "solid-js": "^1.8.11"
   }
 }
