@@ -1,5 +1,5 @@
 {
-  "name": "stg-gt-local",
+  "name": "bundle-replacer",
   "version": "0.3.0",
   "type": "module",
   "description": "Why local when you can stg?",
