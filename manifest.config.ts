@@ -1,16 +1,14 @@
 import { defineManifest } from "@crxjs/vite-plugin";
-import packageJson from "./package.json";
-const { version } = packageJson;
-
-const [major, minor, patch, label = "0"] = version
-  .replace(/[^\d.-]+/g, "")
-  .split(/[.-]/);
+import {
+  getExtensionVersion,
+  packageVersion,
+} from "./scripts/extensionVersion";
 
 export default defineManifest(async (env) => ({
   manifest_version: 3,
   name: "BundleReplacer",
-  version: `${major}.${minor}.${patch}.${label}`,
-  version_name: version,
+  version: getExtensionVersion(),
+  version_name: packageVersion,
   side_panel: {
     default_path: "index.html",
   },
