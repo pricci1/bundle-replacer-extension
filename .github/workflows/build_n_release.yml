@@ -1,0 +1,23 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install
+      - run: bun run build
+      - uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r dist.zip dist
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist.zip
