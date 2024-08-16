@@ -32,4 +32,7 @@ export default defineManifest(async (env) => ({
     service_worker: "src/background.ts",
     type: "module",
   },
+  homepage_url: "https://github.com/pricci1/bundle-replacer-extension",
+  update_url:
+    "https://github.com/pricci1/bundle-replacer-extension/releases/latest/download/updates.xml",
 }));
