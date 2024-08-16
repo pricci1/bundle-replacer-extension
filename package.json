@@ -12,6 +12,7 @@
   "license": "MIT",
   "devDependencies": {
     "@crxjs/vite-plugin": "beta",
+    "@types/bun": "^1.1.6",
     "@types/chrome": "^0.0.260",
     "solid-devtools": "^0.29.2",
     "typescript": "^5.3.3",
