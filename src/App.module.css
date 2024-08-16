@@ -50,3 +50,9 @@
 .targetUrl { grid-area: targetUrl; }
 
 .targetHostname { grid-area: targetHostname; }
+
+.ruleTypeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

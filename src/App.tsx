@@ -1,4 +1,4 @@
-import { type Component, batch, For } from "solid-js";
+import { type Component, batch, For, createSignal } from "solid-js";
 
 import styles from "./App.module.css";
 import { createLocalStore } from "./store";
@@ -8,6 +8,8 @@ const [rules, setRules] = await createLocalStore<Rule[]>("rules");
 
 const RulesForm: Component = () => {
   let hostnameInput: HTMLInputElement;
+  const [ruleType, setRuleType] = createSignal<Rule['type']>("replace");
+
   const addRule = (e: SubmitEvent) => {
     e.preventDefault();
     if (!e.target) return;
@@ -22,17 +24,47 @@ const RulesForm: Component = () => {
           url: data.url,
           enabled: true,
           hostname: data.hostname,
+          type: ruleType(),
         },
       ]);
     });
   };
+
   return (
     <form onSubmit={addRule}>
       <fieldset>
-        <label>
-          Regex
-          <input type="text" name="selector" id="selector" required />
-        </label>
+        <legend>Rule Type</legend>
+        <fieldset class={styles.ruleTypeContainer}>
+          <label>
+            <input
+              type="radio"
+              name="rule-type"
+              value="replace"
+              checked={ruleType() === "replace"}
+              onChange={() => setRuleType("replace")}
+            />
+            Replace
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="rule-type"
+              value="inject"
+              checked={ruleType() === "inject"}
+              onChange={() => setRuleType("inject")}
+            />
+            Inject
+          </label>
+        </fieldset>
+      </fieldset>
+
+      <fieldset>
+        {ruleType() === "replace" && (
+          <label>
+            Regex
+            <input type="text" name="selector" id="selector" required />
+          </label>
+        )}
         <label>
           Target URL
           <input type="text" name="url" id="url" required />
@@ -66,8 +98,9 @@ const RulesForm: Component = () => {
             </button>
           </fieldset>
         </label>
-        <button type="submit">Add rule</button>
       </fieldset>
+
+      <button type="submit">Add rule</button>
     </form>
   );
 };
@@ -114,9 +147,11 @@ const App: Component = () => {
                   </span>
                 </div>
               </div>
-              <div class={styles.ruleSelector}>
-                <p>{rule.selector}</p>
-              </div>
+              {rule.selector && (
+                <div class={styles.ruleSelector}>
+                  <p>{rule.selector}</p>
+                </div>
+              )}
               <div class={styles.targetUrl}>
                 <p>{rule.url}</p>
               </div>
