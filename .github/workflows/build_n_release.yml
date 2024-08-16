@@ -17,11 +17,18 @@ jobs:
       - uses: montudor/action-zip@v1
         with:
           args: zip -qq -r dist.zip dist
+      - uses: cardinalby/webext-buildtools-chrome-crx-action@v2
+        with:
+          zipFilePath: dist.zip
+          crxFilePath: bundle-replacer-${{ github.ref_name }}.crx
+          privateKey: ${{ secrets.CHROME_CRX_PRIVATE_KEY }}
       - name: Release
         uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: dist.zip
+          files: |
+            dist.zip
+            bundle-replacer-${{ github.ref_name }}.crx
 permissions:
   contents: write
