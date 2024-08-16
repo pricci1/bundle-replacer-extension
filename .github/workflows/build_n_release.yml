@@ -25,6 +25,7 @@ jobs:
           zipFilePath: dist.zip
           crxFilePath: bundle-replacer-${{ github.ref_name }}.crx
           privateKey: ${{ secrets.CHROME_CRX_PRIVATE_KEY }}
+      - run: bun run scripts/build-update.ts ${{ github.ref_name }}
       - name: Release
         uses: softprops/action-gh-release@v2
         env:
@@ -33,5 +34,6 @@ jobs:
           files: |
             dist.zip
             bundle-replacer-${{ github.ref_name }}.crx
+            updates.xml
 permissions:
   contents: write
