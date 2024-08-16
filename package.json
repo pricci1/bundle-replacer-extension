@@ -1,6 +1,6 @@
 {
   "name": "bundle-replacer",
-  "version": "0.3.0",
+  "version": "0.3.6",
   "type": "module",
   "description": "Why local when you can stg?",
   "scripts": {
